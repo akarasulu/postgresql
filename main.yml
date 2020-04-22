@@ -243,8 +243,8 @@
 
     - name: Stop the NGINX server
       systemd:
-      name: nginx
-      state: stopped
+        name: nginx
+        state: stopped
 
     - name: Change user from www-data to pgadmin for nginx
       lineinfile:
