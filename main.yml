@@ -178,6 +178,8 @@
       command: ./setup_expect.sh "{{ email }}" "{{ password }}"
       become: yes
       become_user: pgadmin
+      args:
+        chdir: /var/lib/pgadmin
 
     # -------------------------------------------------------------------------
     # Configure the local Postgres Server Instance
@@ -233,9 +235,11 @@
         owner: pgadmin
 
     - name: Import localhost server.json
-      command: /var/lib/pgadmin/setup_import.sh "{{ email }}" "/var/lib/pgadmin/servers.json"
+      command: ./setup_import.sh "{{ email }}" "/var/lib/pgadmin/servers.json"
       become: yes
       become_user: pgadmin
+      args:
+        chdir: /var/lib/pgadmin
 
     # -------------------------------------------------------------------------
     # Setup NGINX
@@ -243,8 +247,8 @@
 
     - name: Stop the NGINX server
       systemd:
-      name: nginx
-      state: stopped
+        name: nginx
+        state: stopped
 
     - name: Change user from www-data to pgadmin for nginx
       lineinfile:
