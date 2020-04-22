@@ -175,9 +175,11 @@
         dest: /etc/systemd/system/pgadmin.service
 
     - name: Prepare python environment
-      command: cd ~ && ./setup_expect.sh "{{ email }}" "{{ password }}"
+      command: ./setup_expect.sh "{{ email }}" "{{ password }}"
       become: yes
       become_user: pgadmin
+      args:
+        chdir: /var/lib/pgadmin
 
     # -------------------------------------------------------------------------
     # Configure the local Postgres Server Instance
