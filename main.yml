@@ -235,9 +235,11 @@
         owner: pgadmin
 
     - name: Import localhost server.json
-      command: /var/lib/pgadmin/setup_import.sh "{{ email }}" "/var/lib/pgadmin/servers.json"
+      command: ./setup_import.sh "{{ email }}" "/var/lib/pgadmin/servers.json"
       become: yes
       become_user: pgadmin
+      args:
+        chdir: /var/lib/pgadmin
 
     # -------------------------------------------------------------------------
     # Setup NGINX
