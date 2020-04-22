@@ -7,7 +7,7 @@
     "containers": [
         {
             "hostname": "pgadmin",
-            "template": "debian-buster",
+            "template": "debian-stretch",
             "peer-criteria": "DB-GROUP",
             "size": "${containerSize}",
             "port-mapping": [
