@@ -175,7 +175,7 @@
         dest: /etc/systemd/system/pgadmin.service
 
     - name: Prepare python environment
-      command: ./setup_expect.sh "{{ email }}" "{{ password }}"
+      command: cd ~ && ./setup_expect.sh "{{ email }}" "{{ password }}"
       become: yes
       become_user: pgadmin
 
